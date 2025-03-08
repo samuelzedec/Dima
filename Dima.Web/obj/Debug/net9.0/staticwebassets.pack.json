@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "/home/samuel/Dima/Dima.App/bin/Debug/net9.0/wwwroot/_framework/blazor.webassembly.js",
+      "PackagePath": "staticwebassets/_framework/blazor.webassembly.js"
+    },
+    {
+      "Id": "/home/samuel/Dima/Dima.App/wwwroot/css/app.css",
+      "PackagePath": "staticwebassets/css/app.css"
+    },
+    {
+      "Id": "/home/samuel/Dima/Dima.App/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "/home/samuel/Dima/Dima.App/wwwroot/icon-192.png",
+      "PackagePath": "staticwebassets/icon-192.png"
+    },
+    {
+      "Id": "/home/samuel/Dima/Dima.App/wwwroot/icon-512.png",
+      "PackagePath": "staticwebassets/icon-512.png"
+    },
+    {
+      "Id": "/home/samuel/Dima/Dima.App/wwwroot/imgs/dima.png",
+      "PackagePath": "staticwebassets/imgs/dima.png"
+    },
+    {
+      "Id": "/home/samuel/Dima/Dima.App/wwwroot/imgs/logo.png",
+      "PackagePath": "staticwebassets/imgs/logo.png"
+    },
+    {
+      "Id": "/home/samuel/Dima/Dima.App/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "/home/samuel/Dima/Dima.App/wwwroot/manifest.webmanifest",
+      "PackagePath": "staticwebassets/manifest.webmanifest"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.Dima.App.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.Dima.App.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.build.Dima.App.props",
+      "PackagePath": "build\\Dima.App.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.Dima.App.props",
+      "PackagePath": "buildMultiTargeting\\Dima.App.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.Dima.App.props",
+      "PackagePath": "buildTransitive\\Dima.App.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

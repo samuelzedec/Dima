@@ -1,0 +1,54 @@
+@page "/register"
+@layout HeadlessLayout
+
+<PageTitle>Dima - Entrar</PageTitle>
+
+<MudGrid Justify="Justify.Center">
+    <MudItem xs="12" sm="12" md="8" lg="6" xl="6" xxl="6">
+        <MudPaper Class="mud-width-full pa-8">
+            <div class="d-flex justify-center py-8">
+                <img alt="dima image" src="imgs/dima.png" width="200">
+            </div>
+            <MudForm @ref="_mudForm">
+
+                <MudTextField
+                    T="string"
+                    Label="E-mail"
+                    InputType="InputType.Email"
+                    Required="true"
+                    RequiredError="Informe o E-mail"
+                    Validation="@_validateEmail"
+                />
+
+                <MudTextField
+                    T="string"
+                    Label="Senha"
+                    InputType="InputType.Password"
+                    Required="true"
+                    RequiredError="Informe a Senha"
+                />
+            </MudForm>
+            <div class="d-flex mt-8">
+                <MudButton
+                    Variant="Variant.Filled"
+                    Color="Color.Tertiary"
+                >
+                    COMEÇAR
+                </MudButton>
+                <MudSpacer/>
+                <MudButton
+                    Variant="Variant.Filled"
+                    Color="Color.Primary"
+                    Href="/login"
+                >
+                    JÁ TENHO UMA CONTA
+                </MudButton>
+            </div>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+@code {
+    readonly EmailAddressAttribute _validateEmail = new() { ErrorMessage = "E-mail inválido" };
+    MudForm? _mudForm;
+}
