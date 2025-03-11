@@ -5346,6 +5346,7 @@
         "net9.0"
       ],
       "sources": {
+        "/home/samuel/.dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

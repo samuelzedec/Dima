@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Vjvh1pT4dmc=",
+  "dgSpecHash": "lxasGO2Q66o=",
   "success": true,
   "projectFilePath": "/home/samuel/Dima/Dima.Web/Dima.Web.csproj",
   "expectedPackageFiles": [
@@ -38,8 +38,7 @@
     "/home/samuel/.nuget/packages/microsoft.jsinterop.webassembly/9.0.2/microsoft.jsinterop.webassembly.9.0.2.nupkg.sha512",
     "/home/samuel/.nuget/packages/microsoft.net.illink.tasks/9.0.2/microsoft.net.illink.tasks.9.0.2.nupkg.sha512",
     "/home/samuel/.nuget/packages/microsoft.net.sdk.webassembly.pack/9.0.2/microsoft.net.sdk.webassembly.pack.9.0.2.nupkg.sha512",
-    "/home/samuel/.nuget/packages/mudblazor/8.3.0/mudblazor.8.3.0.nupkg.sha512",
-    "/home/samuel/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/9.0.2/microsoft.netcore.app.runtime.mono.browser-wasm.9.0.2.nupkg.sha512"
+    "/home/samuel/.nuget/packages/mudblazor/8.3.0/mudblazor.8.3.0.nupkg.sha512"
   ],
   "logs": []
 }

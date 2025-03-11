@@ -31,7 +31,7 @@ public class CookieAuthenticationStateProvider(IHttpClientFactory httpClientFact
             return new AuthenticationState(user);
 
         var claims = await GetClaims(userInfo);
-        
+
         var id = new ClaimsIdentity(claims, nameof(CookieAuthenticationStateProvider));
         user = new ClaimsPrincipal(id);
         _isAuthenticated = true;
@@ -67,20 +67,19 @@ public class CookieAuthenticationStateProvider(IHttpClientFactory httpClientFact
         {
             roles = await _client.GetFromJsonAsync<RoleClaim[]>($"{IdentityPreffix}/roles");
         }
-        catch (Exception e)
+        catch
         {
             return claims;
         }
 
-        foreach (var role in roles ?? [])
-        {
-            if (!string.IsNullOrEmpty(role.Type) && !string.IsNullOrEmpty(role.Value))
-                claims.Add(new Claim(role.Type, role.Value, role.ValueType, role.Issuer, role.OriginalIssuer));
-        }
-
         claims.AddRange(roles
             ?.Where(x => !string.IsNullOrEmpty(x.Type) && !string.IsNullOrEmpty(x.Value))
-            .Select(x => new Claim(x.Type!, x.Value!, x.ValueType, x.Issuer, x.OriginalIssuer)) ?? []);
+            .Select(x => new Claim(
+                x.Type!,
+                x.Value!,
+                x.ValueType,
+                x.Issuer,
+                x.OriginalIssuer)) ?? []);
 
         return claims;
     }

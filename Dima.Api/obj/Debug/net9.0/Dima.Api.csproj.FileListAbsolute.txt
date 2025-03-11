@@ -158,3 +158,4 @@
 /home/samuel/Dima/Dima.Api/obj/Debug/net9.0/Dima.Api.pdb
 /home/samuel/Dima/Dima.Api/obj/Debug/net9.0/Dima.Api.genruntimeconfig.cache
 /home/samuel/Dima/Dima.Api/obj/Debug/net9.0/ref/Dima.Api.dll
+/home/samuel/Dima/Dima.Api/obj/Debug/net9.0/Dima.Api.sourcelink.json

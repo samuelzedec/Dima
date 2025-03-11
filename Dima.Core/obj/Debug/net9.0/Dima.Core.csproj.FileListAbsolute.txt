@@ -5,6 +5,7 @@
 /home/samuel/Dima/Dima.Core/obj/Debug/net9.0/Dima.Core.AssemblyInfoInputs.cache
 /home/samuel/Dima/Dima.Core/obj/Debug/net9.0/Dima.Core.AssemblyInfo.cs
 /home/samuel/Dima/Dima.Core/obj/Debug/net9.0/Dima.Core.csproj.CoreCompileInputs.cache
+/home/samuel/Dima/Dima.Core/obj/Debug/net9.0/Dima.Core.sourcelink.json
 /home/samuel/Dima/Dima.Core/obj/Debug/net9.0/Dima.Core.dll
 /home/samuel/Dima/Dima.Core/obj/Debug/net9.0/refint/Dima.Core.dll
 /home/samuel/Dima/Dima.Core/obj/Debug/net9.0/Dima.Core.pdb

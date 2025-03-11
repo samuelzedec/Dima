@@ -16,8 +16,7 @@ public static class BuilderExtension
         Configuration.ConnectionString =
             builder
                 .Configuration
-                .GetConnectionString("DefaultConnection")
-            ?? string.Empty;
+                .GetConnectionString("DefaultConnection")!;
 
         Configuration.BackendUrl =
             builder
@@ -44,7 +43,7 @@ public static class BuilderExtension
     {
         builder
             .Services
-            .AddDbContext<AppDbContext>(options => options.UseSqlServer());
+            .AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
 
         builder
             .Services
