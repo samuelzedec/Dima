@@ -28,4 +28,6 @@ builder.Services
 // HTTP enviada através desse cliente passe pelo CookieHandler personalizado.
 
 builder.Services.AddTransient<IAccountHandler, AccountHandler>();
+builder.Services.AddTransient<ITransactionHandler, TransactionHandler>();
+builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
 await builder.Build().RunAsync();
