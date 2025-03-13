@@ -1,3 +1,5 @@
+using System.Net.Http.Json;
+using Dima.Core.Common.Extensions;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Transactions;
@@ -5,30 +7,47 @@ using Dima.Core.Responses;
 
 namespace Dima.Web.Handlers;
 
-public class TransactionHandler : ITransactionHandler
+public class TransactionHandler(IHttpClientFactory httpClientFactory) : ITransactionHandler
 {
-    public Task<Response<Transaction?>> CreateAsync(CreateTransactionRequest request)
+    private readonly HttpClient _client = httpClientFactory.CreateClient(Configuration.HttpClientName);
+    public async Task<Response<Transaction?>> CreateAsync(CreateTransactionRequest request)
     {
-        throw new NotImplementedException();
+        var result = await _client.PostAsJsonAsync("v1/transactions", request);
+        return await result.Content.ReadFromJsonAsync<Response<Transaction?>>()
+               ?? new Response<Transaction?>(null, (int)result.StatusCode, "Não foi possível criar a transação");
     }
 
-    public Task<Response<Transaction?>> UpdateAsync(UpdateTransactionRequest request)
+    public async Task<Response<Transaction?>> UpdateAsync(UpdateTransactionRequest request)
     {
-        throw new NotImplementedException();
+        var result = await _client.PutAsJsonAsync($"v1/transactions/{request.Id}", request);
+        return await result.Content.ReadFromJsonAsync<Response<Transaction?>>()
+               ?? new Response<Transaction?>(null, (int)result.StatusCode, "Não foi possível atualizar a transação");
     }
 
-    public Task<Response<Transaction?>> DeleteAsync(DeleteTransactionRequest request)
+    public async Task<Response<Transaction?>> DeleteAsync(DeleteTransactionRequest request)
     {
-        throw new NotImplementedException();
-    }
+        var result = await _client.DeleteAsync($"v1/transactions/{request.Id}");
+        return await result.Content.ReadFromJsonAsync<Response<Transaction?>>()
+               ?? new Response<Transaction?>(null, (int)result.StatusCode, "Não foi possível deletar a transação");    }
 
-    public Task<Response<Transaction?>> GetByIdAsync(GetTransactionByIdRequest request)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<Response<Transaction?>> GetByIdAsync(GetTransactionByIdRequest request)
+        => await _client.GetFromJsonAsync<Response<Transaction?>>($"v1/transactions/{request.Id}")
+           ?? new Response<Transaction?>(null, 400, "Não foi possível obter a transação");
 
-    public Task<PagedResponse<List<Transaction>?>> GetByPeriodAsync(GetTransactionsByPeriodRequest request)
+    public async Task<PagedResponse<List<Transaction>?>> GetByPeriodAsync(GetTransactionsByPeriodRequest request)
     {
-        throw new NotImplementedException();
+        const string format = "yyyy-MM-dd";
+        var startDate = request.StartDate is not null
+            ? request.StartDate.Value.ToString(format)
+            : DateTime.UtcNow.GetFirstDay().ToString(format);
+
+        var endDate = request.EndDate is not null
+            ? request.EndDate.Value.ToString(format)
+            : DateTime.UtcNow.GetLastDay().ToString(format);
+
+        var url = $"v1/transactions?startDate={startDate}&endDate={endDate}";
+        
+        return await _client.GetFromJsonAsync<PagedResponse<List<Transaction>?>>(url)
+               ?? new PagedResponse<List<Transaction>?>(null, 400, "Não foi possivel obter as transações");
     }
 }
