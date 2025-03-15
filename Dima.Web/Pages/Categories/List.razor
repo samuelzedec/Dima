@@ -1,0 +1,39 @@
+@page "/categories"
+@inherits ListCategoriesPage
+
+<PageTitle>Categorias</PageTitle>
+
+<MudText Typo="Typo.h3">Categorias</MudText>
+
+<div class="d-flex justify-end gap-2">
+    <MudButton
+        Variant="Variant.Filled"
+        Color="Color.Primary"
+        StartIcon="@Icons.Material.TwoTone.Add"
+        Href="categories/add"
+    >
+        NOVA CATEGORIA
+    </MudButton>
+</div>
+
+<MudDataGrid
+    Filterable="true"
+    QuickFilter="Filter"
+    Items="@Categories"
+    Hideable="true"
+    Class="mt-4">
+    <ToolBarContent>
+        <MudTextField
+            Placeholder="Filtrar"
+            @bind-Value="SearchTerm"
+            Adornment="Adornment.Start"
+            AdornmentIcon="@Icons.Material.Filled.Search"
+            Immediate="true"
+            IconSize="Size.Medium"
+        />
+    </ToolBarContent>
+    <Columns>
+        <PropertyColumn Property="x => x.Id" Title="#"/>
+        <PropertyColumn Property="x => x.Title" Title="Título"/>
+    </Columns>
+</MudDataGrid>
