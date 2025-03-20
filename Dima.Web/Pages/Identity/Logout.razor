@@ -10,10 +10,15 @@
     </div>
     <MudAlert Severity="Severity.Info">
         <div>
-            <MudText>Sessão Finalizada...</MudText>
-            <MudButton Variant="Variant.Text" Href="/">
-                IR PARA TELA DE LOGIN
-            </MudButton>
+            <MudText>Sua sessão será encerrada. Obrigado por usar o Dima.</MudText>
+            <div class="mt-3 d-flex gap-4">
+                <MudButton Variant="Variant.Filled" Color="Color.Warning" Href="/" OnClick="ToGoPageLogin">
+                    Encerrar
+                </MudButton>
+                <MudButton Href="/" Variant="Variant.Filled" Color="Color.Info">
+                    Voltar
+                </MudButton>
+            </div>
         </div>
     </MudAlert>
 </MudPaper>

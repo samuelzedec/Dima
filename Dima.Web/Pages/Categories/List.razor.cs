@@ -14,12 +14,13 @@ public partial class ListCategoriesPage : ComponentBase
     public List<Category> Categories { get; set; } = [];
 
     public string SearchTerm { get; set; } = string.Empty;
-    
+
     #endregion
 
     #region Services
 
     [Inject] public ISnackbar Snackbar { get; set; } = null!;
+    [Inject] public IDialogService DialogService { get; set; } = null!;
     [Inject] public ICategoryHandler Handler { get; set; } = null!;
 
     #endregion
@@ -49,9 +50,43 @@ public partial class ListCategoriesPage : ComponentBase
     }
 
     #endregion
+    
+    #region Methods
 
-    #region Fields
+    public async void OnDeleteButtonClickedAsync(long id, string title)
+    {
+        var result = await DialogService.ShowMessageBox(
+            "ATENÇÃO",
+            $"Ao prosseguir a categoria \"{title}\" será excluída. Está é uma ação irreversível! Deseja Continuar?",
+            yesText: "EXCLUIR",
+            cancelText: "CANCELAR");
 
+        if (result is true)
+            await OnDeleteAsync(id);
+        
+        StateHasChanged();
+    }
+
+    public async Task OnDeleteAsync(long id)
+    {
+        try
+        {
+            var request = new DeleteCategoryRequest { Id = id };
+            var result = await Handler.DeleteAsync(request);
+        
+            if (result.IsSuccess)
+            {
+                Categories.RemoveAll(x => x.Id == id);
+                Snackbar.Add(result.Message!, Severity.Success);
+            } else 
+                Snackbar.Add(result.Message!, Severity.Error);
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
+    
     public Func<Category, bool> Filter => category =>
     {
         if (string.IsNullOrWhiteSpace(SearchTerm))
@@ -64,9 +99,9 @@ public partial class ListCategoriesPage : ComponentBase
             return true;
 
         if (category.Description is not null && category.Description.Contains(SearchTerm, StringComparison
-            .OrdinalIgnoreCase))
+                .OrdinalIgnoreCase))
             return true;
-        
+
         return false;
     };
 

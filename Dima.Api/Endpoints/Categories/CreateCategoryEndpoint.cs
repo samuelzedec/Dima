@@ -22,7 +22,7 @@ public class CreateCategoryEndpoint : IEndpoint
         CreateCategoryRequest request)
     {
         request.UserId = user.Identity?.Name!;
-        var result = await handler.CreatetAsync(request);
+        var result = await handler.CreateAsync(request);
         return result.IsSuccess
             ? TypedResults.Created($"/{result.Data?.Id}", result)
             : TypedResults.BadRequest(result);

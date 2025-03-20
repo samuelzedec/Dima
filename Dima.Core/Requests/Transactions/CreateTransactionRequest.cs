@@ -11,14 +11,14 @@ public class CreateTransactionRequest : Request
 
     [Required(ErrorMessage = "Tipo de transação deve ser válida")]
     [Range(1, 2, ErrorMessage = "O valor deve ser entre 1 e 2")]
-    public ETransactionType Type { get; set; }
+    public ETransactionType Type { get; set; } = ETransactionType.Withdraw;
     
-    [Required(ErrorMessage = "Quantidade deve ser informada")]
+    [RegularExpression(@"^[0-9]+(\,[0-9]{1,2})?$", ErrorMessage = "Formato inválido. Use apenas números e vírgula como separador decimal")]    [Required(ErrorMessage = "Quantidade deve ser informada")]
     public decimal Amount { get; set; }
     
     [Required(ErrorMessage = "Categoria é requerido")]
     public long CategoryId { get; set; }
     
     [Required(ErrorMessage = "A data deve ser válida")]
-    public DateTime PaidOrReceiveAt { get; set; }
+    public DateTime? PaidOrReceivedAt { get; set; }
 }

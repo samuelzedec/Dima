@@ -30,7 +30,7 @@ public partial class CreateCategoryPage : ComponentBase
 
         try
         {
-            var result = await Handler.CreatetAsync(InputModel);
+            var result = await Handler.CreateAsync(InputModel);
             if (result.IsSuccess)
             {
                 Snackbar.Add(result.Message!, Severity.Success);

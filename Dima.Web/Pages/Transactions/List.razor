@@ -1,0 +1,141 @@
+@page "/releases/history"
+@inherits ListTransactionsPage
+
+<PageTitle>Lançamentos</PageTitle>
+<MudText Typo="Typo.h3">Lançamentos</MudText>
+
+<div class="d-flex justify-center gap-4 my-7">
+    <MudSelect
+        T="int"
+        Label="Mês"
+        @bind-Value="CurrencyMonth"
+        AnchorOrigin="Origin.BottomCenter">
+        @for (var month = 1; month <= 12; month++)
+        {
+            var date = new DateTime(DateTime.UtcNow.Year, month, 1);
+            <MudSelectItem T="int" Value="@month">
+                @(date.ToString("MMMM"))
+            </MudSelectItem>
+        }
+    </MudSelect>
+    
+    <MudSelect
+        T="int"
+        Label="Ano"
+        @bind-Value="CurrencyYear"
+        AnchorOrigin="Origin.BottomCenter">
+        @foreach (var year in Years)
+        {
+            <MudSelectItem T="int" Value="year">
+                @year
+            </MudSelectItem>
+        }
+    </MudSelect>
+    
+    <MudSpacer/>
+    <MudButton
+        StartIcon="@Icons.Material.TwoTone.Search"
+        @onclick="OnSearchAsync"
+        Variant="Variant.Filled"
+        Size="Size.Small"
+        Color="Color.Primary">
+        Pesquisar
+    </MudButton>
+</div>
+
+<div class="d-flex justify-end gap-2">
+    <MudButton
+        Variant="Variant.Filled"
+        Color="Color.Primary"
+        StartIcon="@Icons.Material.TwoTone.Add"
+        Href="releases/new"
+    >
+        NOVO LANÇAMENTO
+    </MudButton>
+</div>
+
+<MudDataGrid
+    Items="Transactions"
+    Filterable="true"
+    QuickFilter="Filter"
+    Hideable="true"
+    ColumnResizeMode="ResizeMode.Column"
+    Class="mt-4">
+    <ToolBarContent>
+        <MudTextField
+            Placeholder="Filtrar"
+            @bind-Value="SearchTerm"
+            Adornment="Adornment.Start"
+            AdornmentIcon="@Icons.Material.Filled.Search"
+            Immediate="true"
+            IconSize="Size.Medium"
+        />
+    </ToolBarContent>
+
+    <Columns>
+        <PropertyColumn
+            Property="x => x.Title"
+            Title="Lançamento"/>
+
+        <TemplateColumn Title="Tipo" Filterable="true">
+            <CellTemplate>
+                @if (context.Item.Type == ETransactionType.Deposit)
+                {
+                    <MudChip
+                        Color="Color.Success"
+                        Size="Size.Small"
+                        Variant="Variant.Filled">
+                        Entrada
+                    </MudChip>
+                }
+                else
+                {
+                    <MudChip
+                        Color="Color.Error"
+                        Size="Size.Small"
+                        Variant="Variant.Filled">
+                        Saída
+                    </MudChip>
+                }
+            </CellTemplate>
+        </TemplateColumn>
+
+        <PropertyColumn
+            Property="x => x.Amount"
+            Format="C"
+            Title="Valor"
+            Sortable="true">
+            
+            <FooterTemplate>
+                @context.Items.Sum(x => x.Amount).ToString("C")
+            </FooterTemplate>
+        </PropertyColumn>
+
+        <TemplateColumn>
+            <CellTemplate>
+                <MudStack Row>
+                    <MudIconButton
+                        Href="@($"/releases/edit/{context.Item?.Id}")"
+                        Icon="@Icons.Material.Filled.Edit"
+                        Color="Color.Info"
+                        Size="Size.Small"
+                    />
+                    <MudIconButton
+                        Icon="@Icons.Material.Filled.Delete"
+                        Color="Color.Error"
+                        Size="Size.Small"
+                        OnClick="() => OnDeleteButtonClickedAsync(context.Item!.Id, context.Item.Title)"
+                    />
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>
+
+@*
+   Items="Transactions" - Coleção de dados a ser exibida na tabela
+   Filterable="true" - Habilita a funcionalidade de filtros
+   QuickFilter="Filter" - Define o método que implementa a lógica de filtragem
+   Hideable="true" - Permite ao usuário mostrar/ocultar colunas
+   ColumnResizeMode="ResizeMode.Column" - Permite redimensionar a largura das colunas individualmente
+*@

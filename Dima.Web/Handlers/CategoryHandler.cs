@@ -9,7 +9,7 @@ namespace Dima.Web.Handlers;
 public class CategoryHandler(IHttpClientFactory httpClientFactory) : ICategoryHandler
 {
     private readonly HttpClient _client = httpClientFactory.CreateClient(Configuration.HttpClientName);
-    public async Task<Response<Category?>> CreatetAsync(CreateCategoryRequest request)
+    public async Task<Response<Category?>> CreateAsync(CreateCategoryRequest request)
     {
         var result = await _client.PostAsJsonAsync("v1/categories", request);
         return await result.Content.ReadFromJsonAsync<Response<Category?>>()

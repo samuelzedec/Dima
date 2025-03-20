@@ -9,7 +9,7 @@ namespace Dima.Api.Handlers;
 
 public class CategoryHandler(AppDbContext context) : ICategoryHandler
 {
-    public async Task<Response<Category?>> CreatetAsync(CreateCategoryRequest request)
+    public async Task<Response<Category?>> CreateAsync(CreateCategoryRequest request)
     {
         try
         {

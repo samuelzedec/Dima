@@ -51,6 +51,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2F0ZWdvcmllcy9DcmVhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/samuel/Dima/Dima.Web/Pages/Categories/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2F0ZWdvcmllcy9FZGl0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/samuel/Dima/Dima.Web/Pages/Categories/List.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2F0ZWdvcmllcy9MaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -69,6 +73,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/samuel/Dima/Dima.Web/Pages/Identity/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSWRlbnRpdHkvUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/samuel/Dima/Dima.Web/Pages/Shared/NotFound.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL05vdEZvdW5kLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/samuel/Dima/Dima.Web/Pages/Transactions/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVHJhbnNhY3Rpb25zL0NyZWF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/samuel/Dima/Dima.Web/Pages/Transactions/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVHJhbnNhY3Rpb25zL0VkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/samuel/Dima/Dima.Web/Pages/Transactions/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVHJhbnNhY3Rpb25zL0xpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/samuel/Dima/Dima.Web/_Imports.razor]

@@ -6,7 +6,7 @@ namespace Dima.Core.Handlers;
 
 public interface ICategoryHandler
 {
-    Task<Response<Category?>> CreatetAsync(CreateCategoryRequest request);
+    Task<Response<Category?>> CreateAsync(CreateCategoryRequest request);
     Task<Response<Category?>> UpdatetAsync(UpdateCategoryRequest request);
     Task<Response<Category?>> DeleteAsync(DeleteCategoryRequest request);
     Task<Response<Category?>> GetByIdAsync(GetCategoryByIdRequest request);

@@ -17,7 +17,7 @@ public partial class LogoutPage : ComponentBase
     #endregion
     
     #region Overrides
-    protected override async Task OnInitializedAsync()
+    public async Task ToGoPageLogin()
     {
         if (await AuthenticationStateProvider.CheckAuthenticatedAsync())
         {

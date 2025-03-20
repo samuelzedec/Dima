@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <BlazorWebAssemblyLoadGlobalizationData>true</BlazorWebAssemblyLoadGlobalizationData> <!--Irá fazer com que seja 
+    incluído os dados para saber mais sobre a região do usuário-->
   </PropertyGroup>
 
   <ItemGroup>
@@ -69,10 +71,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Dima.Core\Dima.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Transactions\" />
   </ItemGroup>
 
 </Project>

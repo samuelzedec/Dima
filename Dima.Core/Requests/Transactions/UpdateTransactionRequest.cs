@@ -22,5 +22,5 @@ public class UpdateTransactionRequest : Request
     public long CategoryId { get; set; }
     
     [Required(ErrorMessage = "A data deve ser válida")]
-    public DateTime PaidOrReceivedAt { get; set; }
+    public DateTime? PaidOrReceivedAt { get; set; }
 }
